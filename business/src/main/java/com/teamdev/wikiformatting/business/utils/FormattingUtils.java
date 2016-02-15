@@ -16,10 +16,6 @@ public class FormattingUtils {
         return marker == neighbor;
     }
 
-    public static String replace(String text, String oldString, String newString) {
-        return text.replaceFirst(oldString, newString);
-    }
-
     public static String buildPresentation(char presentation, int count) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < count; i++) {
