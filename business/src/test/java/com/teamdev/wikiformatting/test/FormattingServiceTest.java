@@ -32,10 +32,17 @@ public class FormattingServiceTest {
     }
 
     @Test
-    public void test_links() {
+    public void test_link() {
         String testData = "[[Click here to google][http://google.com]]";
         final String result = formattingService.wikiToHTML(testData);
         assertEquals("<a href=[[Click here to google][http://google.com]]>Click here to google</a>", result);
+    }
+
+    @Test
+    public void test_invalid_link() throws Exception {
+        String testData = "[[Click here to google[http://google.com]]";
+        final String result = formattingService.wikiToHTML(testData);
+        assertEquals("[[Click here to google[http://google.com]]", result);
     }
 
     @Test
@@ -46,6 +53,13 @@ public class FormattingServiceTest {
     }
 
     @Test
+    public void test_invalid_bold() {
+        String testData = "*some text**";
+        final String result = formattingService.wikiToHTML(testData);
+        assertEquals("<b>some text</b>*", result);
+    }
+
+    @Test
     public void test_italic() {
         String testData = "_some text_";
         final String result = formattingService.wikiToHTML(testData);
@@ -53,9 +67,23 @@ public class FormattingServiceTest {
     }
 
     @Test
+    public void test_invalid_italic() {
+        String testData = "_some text__";
+        final String result = formattingService.wikiToHTML(testData);
+        assertEquals("<i>some text</i>_", result);
+    }
+
+    @Test
     public void test_bold_italic() {
         String testData = "__some text__";
         final String result = formattingService.wikiToHTML(testData);
         assertEquals("<b><i>some text</i></b>", result);
+    }
+
+    @Test
+    public void test_paragraph() throws Exception {
+        String testData = "1st paragraph\nsecond parapgraph";
+        final String result = formattingService.wikiToHTML(testData);
+        assertEquals("1st paragraph&#13;&#10;second parapgraph", result);
     }
 }

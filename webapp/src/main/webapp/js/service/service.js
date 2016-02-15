@@ -2,7 +2,7 @@ var WikiFormattingService = function (eventBus) {
     var eventBus = eventBus;
 
     var format = function (text) {
-        var data = JSON.stringify(text);
+        var data = JSON.stringify(new RequestDTO(text));
         console.log(data);
 
         $.ajax({

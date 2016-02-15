@@ -6,12 +6,13 @@ import com.teamdev.wikiformatting.business.formattes.*;
 
 import javax.jws.WebService;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @WebService
 public class FormattingServiceImpl implements FormattingService {
 
-    private final Set<Formatter> formatterMap = new HashSet<Formatter>() {{
+    private final Set<Formatter> formatterMap = new LinkedHashSet<Formatter>() {{
         add(new BoldFormatter());
         add(new BoldItalicFormatter());
         add(new HeadingFormatter());
@@ -22,8 +23,8 @@ public class FormattingServiceImpl implements FormattingService {
 
     public String wikiToHTML(String text) {
 
-        for (Formatter aFormatterMap : formatterMap) {
-            text = aFormatterMap.format(text);
+        for (Formatter formatter : formatterMap) {
+            text = formatter.format(text);
         }
         return text;
     }
