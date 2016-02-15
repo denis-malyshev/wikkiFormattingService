@@ -33,7 +33,6 @@ public class RestServlet extends HttpServlet {
         final PrintWriter writer = resp.getWriter();
         final String inputData = requestToString(req);
         String json = toJson(new ResponseDTO(formattingService.wikiToHTML(inputData)));
-        System.out.println(json);
         writer.append(json);
         writer.close();
     }

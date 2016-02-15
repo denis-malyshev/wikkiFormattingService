@@ -4,7 +4,7 @@ import static com.teamdev.wikiformatting.business.utils.FormattingUtils.replace;
 
 public final class BoldFormatter  {
 
-    private static final String PRESENTATION = "*";
+    private static final String PRESENTATION = "\\*";
 
     public static String format(String text) {
 
@@ -22,8 +22,8 @@ public final class BoldFormatter  {
                     return result;
                 }
 
-                String firstResult = replace(result, "*", "<b>");
-                result = replace(firstResult, "*", "</b>");
+                String firstResult = replace(result, PRESENTATION, "<b>");
+                result = replace(firstResult, PRESENTATION, "</b>");
             }
             index++;
         }
