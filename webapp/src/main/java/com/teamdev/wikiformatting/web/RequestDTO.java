@@ -1,10 +1,10 @@
 package com.teamdev.wikiformatting.web;
 
-public class ResponseDTO {
+public class RequestDTO {
 
     public String text;
 
-    public ResponseDTO(String text) {
+    public RequestDTO(String text) {
         this.text = text;
     }
 }

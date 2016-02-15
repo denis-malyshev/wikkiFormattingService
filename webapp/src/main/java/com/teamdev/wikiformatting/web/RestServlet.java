@@ -1,6 +1,5 @@
 package com.teamdev.wikiformatting.web;
 
-import com.google.gson.Gson;
 import com.teamdev.wikiformatting.business.FormattingService;
 import com.teamdev.wikiformatting.business.impl.FormattingServiceImpl;
 
@@ -12,6 +11,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+
+import static com.teamdev.wikiformatting.business.utils.JsonHelper.fromJson;
+import static com.teamdev.wikiformatting.business.utils.JsonHelper.toJson;
 
 public class RestServlet extends HttpServlet {
 
@@ -29,23 +31,19 @@ public class RestServlet extends HttpServlet {
         resp.setHeader("success", "yes");
 
         final PrintWriter writer = resp.getWriter();
-        final String inputData = requestToString(req);
-        String json = toJson(new ResponseDTO(formattingService.wikiToHTML(inputData)));
+        final String inputJson = requestToString(req);
+
+        RequestDTO requestDTO = fromJson(inputJson, RequestDTO.class);
+        String json = toJson(new RequestDTO(formattingService.wikiToHTML(requestDTO.text)));
         writer.append(json);
         writer.close();
     }
 
-    private String toJson(ResponseDTO text) {
-        Gson gson = new Gson();
-        return gson.toJson(text);
-    }
 
     private String requestToString(HttpServletRequest req) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(req.getInputStream()));
-        String data = "";
-        if(br != null){
-            data = br.readLine();
-        }
+        String data;
+        data = br.readLine();
         br.close();
         return data;
     }
