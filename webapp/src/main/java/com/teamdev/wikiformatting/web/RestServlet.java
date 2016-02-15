@@ -28,8 +28,6 @@ public class RestServlet extends HttpServlet {
         resp.setContentType("application/json;charset=UTF-8");
         resp.setHeader("success", "yes");
 
-
-
         final PrintWriter writer = resp.getWriter();
         final String inputData = requestToString(req);
         String json = toJson(new ResponseDTO(formattingService.wikiToHTML(inputData)));

@@ -28,12 +28,6 @@ public final class BoldFormatter {
             index++;
         }
 
-        System.out.println(result);
-
         return result;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(BoldFormatter.format("sdf*sdfsdf*"));
     }
 }
