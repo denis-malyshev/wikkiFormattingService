@@ -23,7 +23,7 @@ var View = function (eventBus) {
 
     var renderResultArea = function (responseDTO) {
         console.log(responseDTO.text);
-        $("#HTMLText").val("<html><body>" + responseDTO.text + "</body></html>");
+        $("#HTMLText").html("<html>" + responseDTO.text + "</html>");
     };
 
     eventBus.registerConsumer("FORMAT_SUCCESSFUL", function (data) {

@@ -35,9 +35,4 @@ public final class HeadingFormatter {
 
         return result;
     }
-
-    public static void main(String[] args) {
-
-        System.out.println(HeadingFormatter.format("==456546546=="));
-    }
 }
