@@ -15,10 +15,10 @@ public final class BoldItalicFormatter {
 
         int index = 0;
         while (index < text.length()) {
-            if (text.indexOf(PRESENTATION, index) != -1) {
-                index = text.indexOf(PRESENTATION, index);
+            if (result.indexOf(PRESENTATION, index) != -1) {
+                index = result.indexOf(PRESENTATION, index);
 
-                if(text.indexOf(PRESENTATION,index) == -1) {
+                if (result.indexOf(PRESENTATION, index + 1) == -1) {
                     return result;
                 }
 

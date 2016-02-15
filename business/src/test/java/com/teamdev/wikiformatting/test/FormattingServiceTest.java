@@ -28,7 +28,7 @@ public class FormattingServiceTest {
     public void test_invalid_heading_third_level() {
         String testData = "===some text==";
         final String result = formattingService.wikiToHTML(testData);
-        assertEquals("<h3>some text</h3>", result);
+        assertEquals("<h2>=some text</h2>", result);
     }
 
     @Test

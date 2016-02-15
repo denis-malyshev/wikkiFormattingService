@@ -2,7 +2,7 @@ package com.teamdev.wikiformatting.business.formattes;
 
 import static com.teamdev.wikiformatting.business.utils.FormattingUtils.replace;
 
-public final class BoldFormatter  {
+public final class BoldFormatter {
 
     private static final String PRESENTATION = "\\*";
 
@@ -15,10 +15,10 @@ public final class BoldFormatter  {
 
         int index = 0;
         while (index < text.length()) {
-            if (text.indexOf(PRESENTATION, index) != -1) {
-                index = text.indexOf(PRESENTATION, index);
+            if (result.indexOf(PRESENTATION, index) != -1) {
+                index = result.indexOf(PRESENTATION, index);
 
-                if(text.indexOf(PRESENTATION,index) == -1) {
+                if (result.indexOf(PRESENTATION, index + 1) == -1) {
                     return result;
                 }
 
@@ -28,6 +28,12 @@ public final class BoldFormatter  {
             index++;
         }
 
+        System.out.println(result);
+
         return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(BoldFormatter.format("sdf*sdfsdf*"));
     }
 }

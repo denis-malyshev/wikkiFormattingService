@@ -1,7 +1,6 @@
 package com.teamdev.wikiformatting.business.formattes;
 
-import static com.teamdev.wikiformatting.business.utils.FormattingUtils.countNeighbors;
-import static com.teamdev.wikiformatting.business.utils.FormattingUtils.replace;
+import static com.teamdev.wikiformatting.business.utils.FormattingUtils.*;
 
 public final class HeadingFormatter {
 
@@ -19,16 +18,14 @@ public final class HeadingFormatter {
         int index = 0;
         while (index < chars.length) {
 
-            if (text.indexOf(PRESENTATION, index) != -1) {
-                index = text.indexOf(PRESENTATION, index);
+            if (result.indexOf(PRESENTATION, index) != -1) {
+                index = result.indexOf(PRESENTATION, index);
                 final int count = countNeighbors(PRESENTATION, chars, index);
-                StringBuilder stringBuilder = new StringBuilder();
-                for (int i = 0; i < count; i++) {
-                    stringBuilder.append(PRESENTATION);
+                final String oldString = buildPresentation(PRESENTATION, count);
+                if (result.indexOf(oldString, index + 1) != -1) {
+                    String firstResult = replace(result, oldString, "<h" + count + ">");
+                    result = replace(firstResult, oldString, "</h" + count + ">");
                 }
-                final String oldString = stringBuilder.toString();
-                String firstResult = replace(result, oldString, "<h" + count + ">");
-                result = replace(firstResult, oldString, "</h" + count + ">");
             }
             index++;
         }

@@ -2,7 +2,7 @@ package com.teamdev.wikiformatting.business.formattes;
 
 import static com.teamdev.wikiformatting.business.utils.FormattingUtils.replace;
 
-public final class ItalicFormatter  {
+public final class ItalicFormatter {
 
     private static final String PRESENTATION = "_";
 
@@ -15,10 +15,10 @@ public final class ItalicFormatter  {
 
         int index = 0;
         while (index < text.length()) {
-            if (text.indexOf(PRESENTATION, index) != -1) {
-                index = text.indexOf(PRESENTATION, index);
+            if (result.indexOf(PRESENTATION, index) != -1) {
+                index = result.indexOf(PRESENTATION, index);
 
-                if(text.indexOf(PRESENTATION,index) == -1) {
+                if (result.indexOf(PRESENTATION, index + 1) == -1) {
                     return result;
                 }
 
