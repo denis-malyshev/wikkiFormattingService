@@ -1,12 +1,14 @@
 package com.teamdev.wikiformatting.business.formattes;
 
+import com.teamdev.wikiformatting.business.Formatter;
+
 import static com.teamdev.wikiformatting.business.utils.FormattingUtils.replace;
 
-public final class ItalicFormatter {
+public final class ItalicFormatter implements Formatter {
 
-    private static final String PRESENTATION = "_";
+    private final String PRESENTATION = "_";
 
-    public static String format(String text) {
+    public String format(String text) {
 
         if (!text.contains(PRESENTATION))
             return text;

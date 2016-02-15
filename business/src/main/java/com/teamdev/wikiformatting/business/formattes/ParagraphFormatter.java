@@ -1,10 +1,10 @@
 package com.teamdev.wikiformatting.business.formattes;
 
-public final class ParagraphFormatter {
+import com.teamdev.wikiformatting.business.Formatter;
 
-    private static final String PRESENTATION = "\\" + "n";
+public final class ParagraphFormatter implements Formatter {
 
-    public static String format(String text) {
-        return text.replaceAll(PRESENTATION, "&#13;&#10;");
+    public String format(String text) {
+        return text.replaceAll("\\n", "&#13;&#10;");
     }
 }
