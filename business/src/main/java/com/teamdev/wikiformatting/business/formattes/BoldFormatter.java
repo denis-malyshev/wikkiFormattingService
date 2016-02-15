@@ -1,12 +1,14 @@
 package com.teamdev.wikiformatting.business.formattes;
 
+import com.teamdev.wikiformatting.business.Formatter;
+
 import static com.teamdev.wikiformatting.business.utils.FormattingUtils.replace;
 
-public final class BoldFormatter {
+public final class BoldFormatter implements Formatter{
 
-    private static final String PRESENTATION = "*";
+    private  final String PRESENTATION = "*";
 
-    public static String format(String text) {
+    public  String format(String text) {
 
         if (!text.contains(PRESENTATION))
             return text;

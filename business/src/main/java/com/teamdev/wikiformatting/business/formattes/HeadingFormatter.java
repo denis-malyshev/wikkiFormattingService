@@ -1,12 +1,14 @@
 package com.teamdev.wikiformatting.business.formattes;
 
+import com.teamdev.wikiformatting.business.Formatter;
+
 import static com.teamdev.wikiformatting.business.utils.FormattingUtils.*;
 
-public final class HeadingFormatter {
+public final class HeadingFormatter implements Formatter {
 
-    private static final char PRESENTATION = '=';
+    private final char PRESENTATION = '=';
 
-    public static String format(String text) {
+    public String format(String text) {
 
         if (text.indexOf(PRESENTATION) == -1) {
             return text;
