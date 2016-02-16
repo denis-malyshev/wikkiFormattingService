@@ -2,11 +2,11 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
 
     <servlet>
-        <servlet-name>RestServlet</servlet-name>
-        <servlet-class>com.teamdev.wikiformatting.web.RestServlet</servlet-class>
+        <servlet-name>TextFormattingServlet</servlet-name>
+        <servlet-class>com.teamdev.wikiformatting.web.TextFormattingServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>RestServlet</servlet-name>
+        <servlet-name>TextFormattingServlet</servlet-name>
         <url-pattern>/to_html</url-pattern>
     </servlet-mapping>
 

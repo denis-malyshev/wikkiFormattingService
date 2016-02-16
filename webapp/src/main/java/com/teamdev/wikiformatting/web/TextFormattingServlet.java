@@ -1,7 +1,8 @@
 package com.teamdev.wikiformatting.web;
 
-import com.teamdev.wikiformatting.business.FormattingService;
-import com.teamdev.wikiformatting.business.impl.FormattingServiceImpl;
+import com.teamdev.wikiformatting.business.TextFormattingService;
+import com.teamdev.wikiformatting.business.impl.WikiTextFormattingService;
+import com.teamdev.wikkiformatting.web.dto.RequestDTO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,16 +13,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
-import static com.teamdev.wikiformatting.business.utils.JsonHelper.fromJson;
-import static com.teamdev.wikiformatting.business.utils.JsonHelper.toJson;
+import static com.teamdev.wikiformatting.web.utils.JsonHelper.fromJson;
+import static com.teamdev.wikiformatting.web.utils.JsonHelper.toJson;
 
-public class RestServlet extends HttpServlet {
+public class TextFormattingServlet extends HttpServlet {
 
-    private FormattingService formattingService;
+    private TextFormattingService textFormattingService;
 
     @Override
     public void init() throws ServletException {
-        formattingService = new FormattingServiceImpl();
+        textFormattingService = new WikiTextFormattingService();
     }
 
     @Override
@@ -34,7 +35,7 @@ public class RestServlet extends HttpServlet {
         final String inputJson = requestToString(req);
 
         RequestDTO requestDTO = fromJson(inputJson, RequestDTO.class);
-        String json = toJson(new RequestDTO(formattingService.wikiToHTML(requestDTO.text)));
+        String json = toJson(new RequestDTO(textFormattingService.format(requestDTO.text)));
         writer.append(json);
         writer.close();
     }

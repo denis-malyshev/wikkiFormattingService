@@ -1,4 +1,4 @@
-package com.teamdev.wikiformatting.business.utils;
+package com.teamdev.wikiformatting.web.utils;
 
 import com.google.gson.Gson;
 
@@ -10,10 +10,6 @@ public final class JsonHelper {
 
     public static String toJson(Object data) {
         return GSON.toJson(data);
-    }
-
-    public static <T> T fromJson(String json, Type type) {
-        return GSON.fromJson(json, type);
     }
 
     public static <T> T fromJson(String json, Class<T> clazz) {
