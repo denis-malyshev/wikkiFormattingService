@@ -17,6 +17,7 @@
     <modules>
         <module>business</module>
         <module>webapp</module>
+        <module>web-api</module>
     </modules>
 
 </project>
