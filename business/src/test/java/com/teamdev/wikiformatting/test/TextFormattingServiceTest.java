@@ -81,7 +81,7 @@ public class TextFormattingServiceTest {
     }
 
     @Test
-    public void test_paragraph() throws Exception {
+    public void test_paragraph() {
         String testData = "1st paragraph\nsecond parapgraph";
         final String result = textFormattingService.format(testData);
         assertEquals("1st paragraph&#13;&#10;second parapgraph", result);

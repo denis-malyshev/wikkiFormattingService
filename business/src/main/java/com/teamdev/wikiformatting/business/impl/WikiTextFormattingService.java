@@ -2,7 +2,7 @@ package com.teamdev.wikiformatting.business.impl;
 
 import com.teamdev.wikiformatting.business.TextFormattingService;
 
-public class WikiTextFormattingService implements TextFormattingService {
+public final class WikiTextFormattingService implements TextFormattingService {
 
     public String format(String text) {
 

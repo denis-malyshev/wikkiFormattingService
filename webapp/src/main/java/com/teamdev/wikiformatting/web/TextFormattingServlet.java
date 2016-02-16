@@ -12,18 +12,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import static com.teamdev.wikiformatting.web.utils.JsonHelper.fromJson;
 import static com.teamdev.wikiformatting.web.utils.JsonHelper.toJson;
 
 public class TextFormattingServlet extends HttpServlet {
 
-    private TextFormattingService textFormattingService;
-
-    @Override
-    public void init() throws ServletException {
-        textFormattingService = new WikiTextFormattingService();
-    }
+    private final TextFormattingService textFormattingService = new WikiTextFormattingService();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,8 +30,8 @@ public class TextFormattingServlet extends HttpServlet {
         final PrintWriter writer = resp.getWriter();
         final String inputJson = requestToString(req);
 
-        RequestDTO requestDTO = fromJson(inputJson, RequestDTO.class);
-        String json = toJson(new RequestDTO(textFormattingService.format(requestDTO.text)));
+        final RequestDTO requestDTO = fromJson(inputJson, RequestDTO.class);
+        final String json = toJson(new RequestDTO(textFormattingService.format(requestDTO.text)));
         writer.append(json);
         writer.close();
     }
@@ -43,8 +39,7 @@ public class TextFormattingServlet extends HttpServlet {
 
     private String requestToString(HttpServletRequest req) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(req.getInputStream()));
-        String data;
-        data = br.readLine();
+        final String data = br.readLine();
         br.close();
         return data;
     }
