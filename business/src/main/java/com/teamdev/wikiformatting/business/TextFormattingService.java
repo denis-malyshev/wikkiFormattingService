@@ -1,6 +1,6 @@
 package com.teamdev.wikiformatting.business;
 
-public interface Formatter {
+public interface TextFormattingService {
 
     String format(String text);
 }
