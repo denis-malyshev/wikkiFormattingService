@@ -11,7 +11,7 @@ var View = function (eventbus) {
         '<div class = "container">' +
         '<h2>Result:</h2>' +
         '<div class="col-md-5">' +
-        '<textarea class = "form-control" rows="10" id="HTMLText"></textarea>' +
+        '<div id="HTMLText"></div>' +
         '</br></div></div>'
     );
 
@@ -22,7 +22,7 @@ var View = function (eventbus) {
 
     var renderResultArea = function (responseDTO) {
         console.log(responseDTO.text);
-        $("#HTMLText").val(responseDTO.text);
+        $("#HTMLText").html(responseDTO.text);
     };
 
     eventBus.registerConsumer("FORMAT_SUCCESSFUL", function (data) {
