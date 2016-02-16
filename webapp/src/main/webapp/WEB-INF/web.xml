@@ -7,7 +7,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>TextFormattingServlet</servlet-name>
-        <url-pattern>/to_html</url-pattern>
+        <url-pattern>/wf_service/to_html</url-pattern>
     </servlet-mapping>
 
 </web-app>

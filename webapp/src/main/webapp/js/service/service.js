@@ -7,7 +7,7 @@ var WikiFormattingService = function (eventBus) {
 
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/to_html",
+            url: "http://localhost:8080/wf_service/to_html",
             data: data,
             contentType: "application/json",
             dataType: "json"
