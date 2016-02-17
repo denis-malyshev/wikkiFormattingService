@@ -4,16 +4,16 @@ var Model = function (eventBus) {
 
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/wf_service/to_html",
+            url: RestEndPoints.TO_HTML,
             data: requestData,
             contentType: "application/json",
             dataType: "json"
         }).done(function (responseData) {
-            eventBus.postMessage("MODEL_UPDATED", responseData.text);
+            eventBus.postMessage(Event.MODEL_UPDATED, responseData.text);
         });
     };
 
-    eventBus.registerConsumer("MODEL_UPDATE", function (modelData) {
+    eventBus.registerConsumer(Event.MODEL_UPDATE, function (modelData) {
         update(modelData);
     });
 };

@@ -28,14 +28,14 @@ var View = function (eventBus) {
     $(viewSelector).html(inputContainer + resultContainer);
 
     $(formatBtnSelector).click(function () {
-        eventBus.postMessage("FORMAT_ATTEMPT", $(inputAreaSelector).val());
+        eventBus.postMessage(Event.FORMAT_ATTEMPT, $(inputAreaSelector).val());
     });
 
     var renderResultArea = function (modelData) {
         $(resultAreaSelector).html(modelData);
     };
 
-    eventBus.registerConsumer("MODEL_UPDATED", function (modelData) {
+    eventBus.registerConsumer(Event.MODEL_UPDATED, function (modelData) {
         renderResultArea(modelData)
     });
 };

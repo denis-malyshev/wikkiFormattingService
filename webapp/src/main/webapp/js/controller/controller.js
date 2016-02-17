@@ -3,9 +3,9 @@ var Controller = function (eventBus) {
         return (!/\S/.test(modelData));
     };
 
-    eventBus.registerConsumer("FORMAT_ATTEMPT", function (modelData) {
+    eventBus.registerConsumer(Event.FORMAT_ATTEMPT, function (modelData) {
         if (!isEmptyData(modelData)) {
-            eventBus.postMessage("MODEL_UPDATE", modelData);
+            eventBus.postMessage(Event.MODEL_UPDATE, modelData);
         }
     });
 };
