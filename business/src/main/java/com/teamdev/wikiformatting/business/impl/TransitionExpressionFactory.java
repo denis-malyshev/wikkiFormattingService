@@ -5,7 +5,7 @@ import java.util.*;
 public abstract class TransitionExpressionFactory {
 
     private static final Set<TransitionExpression> WIKI_TO_HTML = new LinkedHashSet<TransitionExpression>() {{
-        add(new TransitionExpression("\\n", "&#13;&#10;"));
+        add(new TransitionExpression("\\n", "</br>"));
         add(new TransitionExpression("__(.*)__", "<b><i>$1</i></b>"));
         add(new TransitionExpression("_(.*)_", "<i>$1</i>"));
         add(new TransitionExpression("\\*(.*)\\*", "<b>$1</b>"));
