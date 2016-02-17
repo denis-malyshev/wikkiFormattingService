@@ -1,6 +1,4 @@
-var Model = function (eventbus) {
-    var eventBus = eventbus;
-
+var Model = function (eventBus) {
     var update = function (modelData) {
         var requestData = JSON.stringify(new RequestDTO(modelData));
 

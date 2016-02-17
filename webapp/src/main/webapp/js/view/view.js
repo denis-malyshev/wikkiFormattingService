@@ -1,6 +1,4 @@
-var View = function (eventbus) {
-    var eventBus = eventbus;
-
+var View = function (eventBus) {
     var viewId = "view";
     var inputAreaId = "inputText";
     var resultAreaId = "resultText";

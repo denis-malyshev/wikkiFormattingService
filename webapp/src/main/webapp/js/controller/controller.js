@@ -1,6 +1,4 @@
-var Controller = function (eventbus) {
-    var eventBus = eventbus;
-
+var Controller = function (eventBus) {
     var isEmptyData = function (modelData) {
         return (!/\S/.test(modelData));
     };
