@@ -32,6 +32,20 @@ public class TextFormattingServiceTest {
     }
 
     @Test
+    public void test_several_headings() {
+        String testData = "== New section ==\n" +
+                "=== Subsection ===\n" +
+                "Text written in subsection\n" +
+                "==== Sub-subsection ====";
+        final String result = textFormattingService.format(testData);
+        assertEquals("<h2> New section </h2></br>" +
+                "<h3> Subsection </h3></br>" +
+                "Text written in subsection</br>" +
+                "<h4> Sub-subsection </h4>", result);
+
+    }
+
+    @Test
     public void test_link() {
         String testData = "[[Click here to google][http://google.com]]";
         final String result = textFormattingService.format(testData);
