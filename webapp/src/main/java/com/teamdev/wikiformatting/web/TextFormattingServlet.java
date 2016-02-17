@@ -37,7 +37,7 @@ public class TextFormattingServlet extends HttpServlet {
 
 
     private String requestToString(HttpServletRequest req) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(req.getInputStream()));
+        final BufferedReader br = new BufferedReader(new InputStreamReader(req.getInputStream()));
         final String data = br.readLine();
         br.close();
         return data;

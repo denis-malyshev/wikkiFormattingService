@@ -2,8 +2,6 @@ package com.teamdev.wikiformatting.web.utils;
 
 import com.google.gson.Gson;
 
-import java.lang.reflect.Type;
-
 public final class JsonHelper {
 
     private static final Gson GSON = new Gson();
