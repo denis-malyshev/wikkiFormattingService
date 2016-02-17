@@ -14,9 +14,9 @@ EventBus.prototype.postMessage = function (type, message) {
             var callback = this.consumers[i].callback;
             var myCallback = function () {
                 callback(message);
+                console.log(new Date().toLocaleTimeString() + ": message posted to " + type);
             };
             setTimeout(myCallback, 100);
-            console.log(new Date().toLocaleTimeString() + ": message posted to " + type);
         }
     }
 };

@@ -1,31 +1,43 @@
 var View = function (eventbus) {
     var eventBus = eventbus;
-    document.body.innerHTML = '<div id="view" class ="container"></div>';
 
-    $("#view").html(
-        '<div class = "container">' +
+    var viewId = "view";
+    var inputAreaId = "inputText";
+    var resultAreaId = "resultText";
+    var formatBtnId = "format";
+
+    var viewSelector = "#" + viewId;
+    var inputAreaSelector = "#" + inputAreaId;
+    var resultAreaSelector = "#" + resultAreaId;
+    var formatBtnSelector = "#" + formatBtnId;
+
+    var innerHTML = '<div id="' + viewId + '" class ="container"></div>';
+
+    var inputContainer = '<div class = "container">' +
         '<h2>Input text:</h2>' +
-        '<div class="col-md-5" id="inputText">' +
-        '<textarea class = "form-control" rows="10" placeholder = "Enter wiki-like formatted text" id="wikiText"></textarea>' +
-        '</br><button id="toHTML" class = "btn btn-primary">To HTML</button></div></div>' +
-        '<div class = "container">' +
+        '<div class="col-md-5">' +
+        '<textarea class = "form-control" rows="10" placeholder = "Enter wiki-like formatted text" id="' + inputAreaId + '"></textarea>' +
+        '</br><button id="' + formatBtnId + '" class = "btn btn-primary">To HTML</button></div></div>';
+
+    var resultContainer = '<div class = "container">' +
         '<h2>Result:</h2>' +
         '<div class="col-md-5">' +
-        '<div id="HTMLText"></div>' +
-        '</br></div></div>'
-    );
+        '<div id="' + resultAreaId + '"></div>' +
+        '</br></div></div>';
 
-    $("#toHTML").click(function () {
-        eventBus.postMessage("FORMAT_ATTEMPT", $("#wikiText").val());
-        console.log($("#wikiText").val());
+    $('body').html(innerHTML);
+
+    $(viewSelector).html(inputContainer + resultContainer);
+
+    $(formatBtnSelector).click(function () {
+        eventBus.postMessage("FORMAT_ATTEMPT", $(inputAreaSelector).val());
     });
 
-    var renderResultArea = function (responseDTO) {
-        console.log(responseDTO.text);
-        $("#HTMLText").html(responseDTO.text);
+    var renderResultArea = function (modelData) {
+        $(resultAreaSelector).html(modelData);
     };
 
-    eventBus.registerConsumer("MODEL_UPDATED", function (data) {
-        renderResultArea(data)
+    eventBus.registerConsumer("MODEL_UPDATED", function (modelData) {
+        renderResultArea(modelData)
     });
 };
