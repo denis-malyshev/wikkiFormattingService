@@ -25,7 +25,7 @@ var View = function (eventbus) {
         $("#HTMLText").html(responseDTO.text);
     };
 
-    eventBus.registerConsumer("FORMAT_SUCCESSFUL", function (data) {
+    eventBus.registerConsumer("MODEL_UPDATED", function (data) {
         renderResultArea(data)
     });
 };
