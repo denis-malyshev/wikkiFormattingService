@@ -1,9 +1,12 @@
 $(function () {
-    (new launch(new EventBus()));
+    (new Application(new EventBus()).launch());
 });
-var launch = function (eventBus) {
-    new Model(eventBus);
-    new View(eventBus);
-    new Controller(eventBus);
+var Application = function (eventBus) {
+    this.eventBus = eventBus;
+};
+Application.prototype.launch = function () {
+    new Model(this.eventBus);
+    new View(this.eventBus);
+    new Controller(this.eventBus);
 };
 
